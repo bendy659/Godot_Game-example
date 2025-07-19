@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddi7ehhtp6s65"]
+
+[ext_resource type="Script" uid="uid://ccuijck81acuv" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vue75"]
+flip_faces = true
+size = Vector3(8, 8, 8)
+
+[sub_resource type="Gradient" id="Gradient_l6cm7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.329949, 0.675127)
+colors = PackedColorArray(1, 0.7, 0, 1, 1, 0.832, 0.44, 1, 1, 0.949, 0.83, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekxnf"]
+noise_type = 0
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bqqt6"]
+width = 32
+height = 32
+color_ramp = SubResource("Gradient_l6cm7")
+noise = SubResource("FastNoiseLite_ekxnf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu84c"]
+albedo_texture = SubResource("NoiseTexture2D_bqqt6")
+
+[node name="main-menu" type="Node3D"]
+script = ExtResource("1_l6cm7")
+
+[node name="background-scroll" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vue75")
+surface_material_override/0 = SubResource("StandardMaterial3D_wu84c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.783333, 0, 1)
+light_energy = 2.0
+light_bake_mode = 1
+omni_range = 7.534
+
+[node name="camera-center" type="Node3D" parent="."]
+
+[node name="camera3d" type="Camera3D" parent="camera-center"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+fov = 70.0
+size = 0.296
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="music" type="AudioStreamPlayer" parent="control"]
+
+[node name="canvas" type="CanvasLayer" parent="."]

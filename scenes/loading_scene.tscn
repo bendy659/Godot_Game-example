@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=3 uid="uid://cb2b6m73dkbd1"]
+
+[ext_resource type="Script" uid="uid://dm637sg006hsv" path="res://scripts/loading_scene.gd" id="1_v0di8"]
+
+[sub_resource type="Gradient" id="Gradient_irmrr"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v0di8"]
+gradient = SubResource("Gradient_irmrr")
+width = 5
+height = 5
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_smnf2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0egu"]
+gradient = SubResource("Gradient_smnf2")
+width = 4
+height = 4
+fill_from = Vector2(1, 1)
+metadata/_snap_enabled = true
+
+[node name="loading-scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v0di8")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="fun-fact" type="Label" parent="margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Интересный факт: Нет."
+vertical_alignment = 2
+
+[node name="progress-bar" type="Control" parent="margin"]
+layout_mode = 2
+
+[node name="background" type="TextureRect" parent="margin/progress-bar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(512, 32)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_v0di8")
+expand_mode = 1
+
+[node name="fill" type="TextureRect" parent="margin/progress-bar/background"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -10.0
+offset_right = -8.0
+offset_bottom = 10.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(0, 12)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_a0egu")
+expand_mode = 1
+
+[node name="prcnt" type="Label" parent="margin/progress-bar/background"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -12.0
+offset_right = -16.0
+offset_bottom = 12.0
+grow_vertical = 2
+pivot_offset = Vector2(42, 12)
+text = "100%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="load-statistic" type="Label" parent="margin/progress-bar"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -72.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(42, 24)
+text = "Загружаю картинку, весом 10.25 Гб..."
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="press-space" type="Label" parent="margin/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -11.5
+offset_right = 143.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(144, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "ЖМАК ПРОБЕЛ ЧТОБ ПРОДОЛЖИТЬ"

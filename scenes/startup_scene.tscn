@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfrbk0ma8xder"]
+
+[ext_resource type="VideoStream" uid="uid://b8u401yaq5u47" path="res://movies/startup_screen.ogv" id="1_0emx8"]
+[ext_resource type="Script" uid="uid://cu86k2vmhjvw7" path="res://scripts/startup-scene.gd" id="1_a51k1"]
+
+[node name="startup-scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a51k1")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="video" type="VideoStreamPlayer" parent="margin"]
+layout_mode = 2
+stream = ExtResource("1_0emx8")
+expand = true
+
+[node name="canvas" type="CanvasLayer" parent="."]
